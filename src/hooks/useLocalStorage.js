@@ -8,17 +8,6 @@ import {useState, useEffect} from 'react';
 
 // Once you have written this hook, refactor useAxios to use useLocalStorage instead of useState.
 
-// const useLocalStorage = (key, value=[]) => {
-//     const setCards = () => {
-//         localStorage.setItem(key, JSON.stringify(value));
-//     }
-//     const getCards = () => {
-//         let localCards = localStorage.getItem(key);
-//         const formattedCards = localCards;
-//         return formattedCards || value;
-//     }
-//     return [setCards, getCards];
-// }
 
 function useLocalStorage(key= null, initialValue = []) {
     if (localStorage.getItem(key)) {
@@ -34,9 +23,3 @@ function useLocalStorage(key= null, initialValue = []) {
   }
 
 export default useLocalStorage;
-
-// const [todos, setTodos] = useState(()=> {
-//     const savedTodos = localStorage.getItem("todos");
-//     const initialValue = JSON.parse(savedTodos);
-//     return initialValue || "";
-// });

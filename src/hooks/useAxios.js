@@ -33,26 +33,25 @@ import {v4 as uuid} from 'uuid';
 import {useState, useEffect} from 'react';
 import useLocalStorage from './useLocalStorage';
 
-const useAxios = (url) => {
+const useAxios = (url, key) => {
+    let initialValue = () => {
+        const returningCards = JSON.parse(localStorage.getItem(key));
+        return returningCards || [];
+    } 
 
-    // const [cards, setCards] = useLocalStorage();
-    const [cards, setCards] = useState([]);
-    // const [setLocal, getLocal] = useLocalStorage('cards');
-    // let initialState;
-    // if (!getLocal()) {
-    //     initialState = []
-    // } else {
-    //     initialState = getLocal();
-    // }
-    
-    
-    // useEffect(()=> {
-    //     console.log("get items from local storage")
-    // }, [])
+    const [cards, setCards] = useState(initialValue);
 
-    // useEffect(()=>{
-    //     console.log("set local storage")
-    // }, [cards])
+    useEffect(()=> {
+        const savedCards = () => {
+            let returnCards = JSON.parse(localStorage.getItem(key));
+            return returnCards || []; 
+        }
+        setCards(()=> savedCards())
+    }, [])
+
+    useEffect(()=>{
+        localStorage.setItem(key, JSON.stringify(cards))
+    }, [cards])
 
     const addCard = async(pokeName=null) => {
         //I do not know why this works.
@@ -68,9 +67,6 @@ const useAxios = (url) => {
             formattedData = {id: uuid(), image: response.data.cards[0].image}
             setCards(cards=> [...cards, {...formattedData}])
         }
-        
-        
-        
     }
     const resetCards = () => {
         setCards([]);
