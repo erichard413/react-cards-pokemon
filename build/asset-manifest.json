@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-cards-pokemon/static/css/main.657ec6a8.css",
+    "main.js": "/react-cards-pokemon/static/js/main.77683b83.js",
+    "static/media/back.png": "/react-cards-pokemon/static/media/back.6ae650187b8fce3c0015.png",
+    "index.html": "/react-cards-pokemon/index.html",
+    "main.657ec6a8.css.map": "/react-cards-pokemon/static/css/main.657ec6a8.css.map",
+    "main.77683b83.js.map": "/react-cards-pokemon/static/js/main.77683b83.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.657ec6a8.css",
+    "static/js/main.77683b83.js"
+  ]
+}
